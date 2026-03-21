@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using BookLibraryEF.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register DbContext with SQL Server
+builder.Services.AddDbContext<LibraryContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection")));
 
 var app = builder.Build();
 

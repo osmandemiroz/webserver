@@ -1,4 +1,4 @@
-@model List<BookLibrary.Models.Book>
+@model List<BookLibraryEF.Models.Book>
 
 @{
     ViewData["Title"] = "Book Library";
@@ -28,25 +28,22 @@
                     <div class="book-content">
                         <h5 class="book-title">@book.Title</h5>
                         <p class="book-author">
-                            <i class="fas fa-user-edit"></i> @book.Director
+                            <i class="fas fa-user-edit"></i> @book.Author.AuthorName
+                        </p>
+                        <p class="book-author-info text-muted small">
+                            @book.Author.AuthorInfo
                         </p>
                         <div class="book-info">
                             <span class="book-year">
                                 <i class="fas fa-calendar-alt"></i> @book.ReleaseYear
                             </span>
-                            <span class="book-rating">
-                                @foreach (var star in book.Stars)
-                                {
-                                    <span class="star">@star</span>
-                                }
-                            </span>
                         </div>
                     </div>
                     <div class="book-footer">
                         <div class="book-price">$@book.Price.ToString("F2")</div>
-                        <button class="btn-add-cart">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
+                        <a asp-action="RentBook" class="btn-add-cart">
+                            <i class="fas fa-hand-holding"></i> Rent
+                        </a>
                     </div>
                 </div>
             </div>
@@ -55,7 +52,6 @@
 </div>
 
 <style>
-    /* Library Header Styles */
     .library-header {
         animation: fadeInDown 0.8s ease-out;
     }
@@ -69,7 +65,6 @@
         margin-bottom: 1rem;
     }
 
-    /* Modern Book Card */
     .modern-book-card {
         background: white;
         border-radius: 16px;
@@ -86,7 +81,6 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
 
-    /* Book Image Section */
     .book-image-wrapper {
         position: relative;
         height: 380px;
@@ -105,7 +99,6 @@
         transform: scale(1.1) rotate(2deg);
     }
 
-    /* Book Overlay */
     .book-overlay {
         position: absolute;
         top: 0;
@@ -146,7 +139,6 @@
         transform: scale(1.1);
     }
 
-    /* Book Content */
     .book-content {
         padding: 1.5rem;
         flex-grow: 1;
@@ -158,16 +150,12 @@
         color: #1f2937;
         margin-bottom: 0.5rem;
         line-height: 1.4;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
     }
 
     .book-author {
         color: #6b7280;
         font-size: 0.95rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -175,6 +163,11 @@
 
     .book-author i {
         color: #8b5cf6;
+    }
+
+    .book-author-info {
+        margin-bottom: 1rem;
+        line-height: 1.4;
     }
 
     .book-info {
@@ -197,29 +190,6 @@
         color: #6366f1;
     }
 
-    .book-rating {
-        display: flex;
-        gap: 2px;
-    }
-
-    .star {
-        color: #fbbf24;
-        font-size: 1rem;
-        animation: starTwinkle 2s ease-in-out infinite;
-    }
-
-    .star:nth-child(1) { animation-delay: 0s; }
-    .star:nth-child(2) { animation-delay: 0.2s; }
-    .star:nth-child(3) { animation-delay: 0.4s; }
-    .star:nth-child(4) { animation-delay: 0.6s; }
-    .star:nth-child(5) { animation-delay: 0.8s; }
-
-    @@keyframes starTwinkle {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.2); }
-    }
-
-    /* Book Footer */
     .book-footer {
         padding: 1rem 1.5rem;
         background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
@@ -249,22 +219,15 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        text-decoration: none;
     }
 
     .btn-add-cart:hover {
         transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
+        color: white;
     }
 
-    .btn-add-cart i {
-        transition: transform 0.3s ease;
-    }
-
-    .btn-add-cart:hover i {
-        transform: rotate(360deg);
-    }
-
-    /* Animations */
     @@keyframes fadeInDown {
         from {
             opacity: 0;
@@ -276,7 +239,6 @@
         }
     }
 
-    /* Responsive Design */
     @@media (max-width: 768px) {
         .book-image-wrapper {
             height: 300px;

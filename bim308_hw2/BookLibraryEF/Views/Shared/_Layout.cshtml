@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookLibrary</title>
+    <title>@ViewData["Title"] - BookLibraryEF</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/BookLibrary.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookLibraryEF.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
@@ -33,6 +33,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Library" asp-action="AddBook">
+                                <i class="fas fa-plus-circle"></i> Add Book
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Library" asp-action="AddUser">
+                                <i class="fas fa-user-plus"></i> Add User
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Library" asp-action="RentBook">
+                                <i class="fas fa-hand-holding"></i> Rent Book
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
                                 <i class="fas fa-shield-alt"></i> Privacy
                             </a>
@@ -53,7 +68,7 @@
             <div class="footer-content">
                 <div class="footer-left">
                     <i class="fas fa-book-reader"></i>
-                    <span>&copy; 2026 BookLibrary - Your Digital Reading Companion</span>
+                    <span>&copy; 2026 BookLibraryEF - Your Digital Reading Companion</span>
                 </div>
                 <div class="footer-right">
                     <a asp-area="" asp-controller="Home" asp-action="Privacy">
