@@ -46,12 +46,14 @@ jobs:
     if: needs.detect-assignments.outputs.assignments != '[]'
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         hw: ${{ fromJson(needs.detect-assignments.outputs.assignments) }}
     steps:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
       - name: Run review for HW${{ matrix.hw }}
         id: review
@@ -121,6 +123,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           git add "bim308_hw${{ matrix.hw }}/REVIEW.md"
           if git diff --cached --quiet; then
             echo "No changes to REVIEW.md"
