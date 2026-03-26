@@ -12,9 +12,7 @@ namespace BookLibraryEF.Models
         public int AuthorID { get; set; }
 
         // Navigation Properties
-        public Author Author { get; set; } = null!;
-
-        // Many Books <-> Many Users
+        public Author? Author { get; set; }
         public ICollection<User> Users { get; set; } = new List<User>();
     }
 }
