@@ -12,6 +12,7 @@ on:
         required: false
 
 permissions:
+  contents: write
   issues: write
 
 jobs:
@@ -45,10 +46,14 @@ jobs:
     if: needs.detect-assignments.outputs.assignments != '[]'
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         hw: ${{ fromJson(needs.detect-assignments.outputs.assignments) }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
 
       - name: Run review for HW${{ matrix.hw }}
         id: review
@@ -123,5 +128,6 @@ jobs:
             echo "No changes to REVIEW.md"
           else
             git commit -m "Update Claude Review for HW${{ matrix.hw }} [skip ci]"
+            git pull --rebase origin main
             git push
           fi
