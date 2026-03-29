@@ -119,7 +119,7 @@ namespace BookLibraryEF.Migrations
                     { 3, 3, "https://m.media-amazon.com/images/I/71kxa1-0mfL._SY466_.jpg", 13.99, 1949, "1984" },
                     { 4, 4, "https://m.media-amazon.com/images/I/71Q1tPupKjL._SY466_.jpg", 11.99, 1813, "Pride and Prejudice" },
                     { 5, 5, "https://m.media-amazon.com/images/I/8125BDk3l9L._SY466_.jpg", 10.99, 1951, "The Catcher in the Rye" },
-                    { 6, 6, "https://m.media-amazon.com/images/I/51KMDtNclHL._SY466_.jpg", 19.390000000000001, 1927, "Nutuk" }
+                    { 6, 6, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VkBKk4MXwH0UL8xRRt7mlVVo7XLv94ofiw&s", 19.390000000000001, 1927, "Nutuk" }
                 });
 
             migrationBuilder.CreateIndex(

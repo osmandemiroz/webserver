@@ -46,7 +46,7 @@ namespace BookLibraryEF.Data
                 new Book { BookID = 3, Title = "1984", ReleaseYear = 1949, Price = 13.99, ImageUrl = "https://m.media-amazon.com/images/I/71kxa1-0mfL._SY466_.jpg", AuthorID = 3 },
                 new Book { BookID = 4, Title = "Pride and Prejudice", ReleaseYear = 1813, Price = 11.99, ImageUrl = "https://m.media-amazon.com/images/I/71Q1tPupKjL._SY466_.jpg", AuthorID = 4 },
                 new Book { BookID = 5, Title = "The Catcher in the Rye", ReleaseYear = 1951, Price = 10.99, ImageUrl = "https://m.media-amazon.com/images/I/8125BDk3l9L._SY466_.jpg", AuthorID = 5 },
-                new Book { BookID = 6, Title = "Nutuk", ReleaseYear = 1927, Price = 19.39, ImageUrl = "https://m.media-amazon.com/images/I/51KMDtNclHL._SY466_.jpg", AuthorID = 6 }
+                new Book { BookID = 6, Title = "Nutuk", ReleaseYear = 1927, Price = 19.39, ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VkBKk4MXwH0UL8xRRt7mlVVo7XLv94ofiw&s", AuthorID = 6 }
             );
 
             // Seed Users

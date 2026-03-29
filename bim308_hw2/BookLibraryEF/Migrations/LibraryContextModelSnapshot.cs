@@ -161,7 +161,7 @@ namespace BookLibraryEF.Migrations
                         {
                             BookID = 6,
                             AuthorID = 6,
-                            ImageUrl = "https://m.media-amazon.com/images/I/51KMDtNclHL._SY466_.jpg",
+                            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8VkBKk4MXwH0UL8xRRt7mlVVo7XLv94ofiw&s",
                             Price = 19.390000000000001,
                             ReleaseYear = 1927,
                             Title = "Nutuk"
