@@ -6,9 +6,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Register DbContext with SQL Server
-builder.Services.AddDbContext<LibraryContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection")));
+// Register DbContext - use SQLite in Docker (Production), SQL Server locally
+var connectionString = builder.Configuration.GetConnectionString("LibraryConnection");
+
+if (builder.Environment.IsProduction())
+{
+    // Docker/Production: use SQLite (no SQL Server LocalDB on Linux)
+    builder.Services.AddDbContext<LibraryContext>(options =>
+        options.UseSqlite("Data Source=/app/data/BookLibraryEF.db"));
+}
+else
+{
+    // Development: use SQL Server LocalDB
+    builder.Services.AddDbContext<LibraryContext>(options =>
+        options.UseSqlServer(connectionString));
+}
 
 var app = builder.Build();
 
@@ -16,7 +28,16 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<LibraryContext>();
-    dbContext.Database.Migrate();
+    if (app.Environment.IsProduction())
+    {
+        // SQLite: create database and tables from model (no migrations needed)
+        dbContext.Database.EnsureCreated();
+    }
+    else
+    {
+        // SQL Server: apply migrations
+        dbContext.Database.Migrate();
+    }
 }
 
 // Configure the HTTP request pipeline.
@@ -38,4 +59,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();app.Run();
+app.Run();
