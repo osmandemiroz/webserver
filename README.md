@@ -29,7 +29,7 @@ Each assignment is reviewed against its PDF requirements. Click an assignment be
 |:--|:--|:--|:--|:--|
 | [HW1](bim308_hw1/) | ASP.NET Core MVC Basics | Completed | 24/24 | [Review](bim308_hw1/REVIEW.md) |
 | [HW2](bim308_hw2/) | Entity Framework Core | Implementation Complete | 34/36 | [Review](bim308_hw2/REVIEW.md) |
-| [HW3](bim308_hw3/) | React Frontend App | Completed | 56/56 | CI Review |
+| [HW3](bim308_hw3/) | React Frontend App | Completed | 56/56 | [Review](bim308_hw3/REVIEW.md) |
 
 ### HW1 - ASP.NET Core MVC Basics
 
