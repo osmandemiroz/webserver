@@ -1,0 +1,32 @@
+[
+  {
+    "authorID": 1,
+    "authorName": "F. Scott Fitzgerald",
+    "authorInfo": "American novelist, widely regarded as one of the greatest writers of the 20th century."
+  },
+  {
+    "authorID": 2,
+    "authorName": "Harper Lee",
+    "authorInfo": "American novelist best known for her Pulitzer Prize-winning novel."
+  },
+  {
+    "authorID": 3,
+    "authorName": "George Orwell",
+    "authorInfo": "English novelist and essayist, known for his sharp criticism of political oppression."
+  },
+  {
+    "authorID": 4,
+    "authorName": "Jane Austen",
+    "authorInfo": "English novelist known for her commentary on the British landed gentry."
+  },
+  {
+    "authorID": 5,
+    "authorName": "J.D. Salinger",
+    "authorInfo": "American writer known for his widely-read novel about teenage angst."
+  },
+  {
+    "authorID": 6,
+    "authorName": "Mustafa Kemal Ataturk",
+    "authorInfo": "Founder of the Republic of Turkey and its first President."
+  }
+]
