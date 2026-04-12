@@ -1,6 +1,6 @@
 # BIM308 - Web Server Programming
 
-ASP.NET Core MVC assignments repository.
+Course assignments repository covering ASP.NET Core MVC and React frontend development.
 
 ## Repository Structure
 
@@ -14,6 +14,9 @@ webserverprogramming/
     BookLibraryEF/
     BIM308_HW2.pdf
     REVIEW.md
+  bim308_hw3/          # HW3 - React Frontend
+    book-library-app-react/
+    BIM308_HW3.pdf
 ```
 
 ---
@@ -26,6 +29,7 @@ Each assignment is reviewed against its PDF requirements. Click an assignment be
 |:--|:--|:--|:--|:--|
 | [HW1](bim308_hw1/) | ASP.NET Core MVC Basics | Completed | 24/24 | [Review](bim308_hw1/REVIEW.md) |
 | [HW2](bim308_hw2/) | Entity Framework Core | Implementation Complete | 34/36 | [Review](bim308_hw2/REVIEW.md) |
+| [HW3](bim308_hw3/) | React Frontend App | Completed | 56/56 | CI Review |
 
 ### HW1 - ASP.NET Core MVC Basics
 
@@ -48,3 +52,16 @@ Each assignment is reviewed against its PDF requirements. Click an assignment be
 - [x] Dockerfile updated to BookLibraryEF.dll
 - [ ] EF Migration (requires `dotnet ef` CLI)
 - [ ] Database update (requires SQL Server)
+
+### HW3 - React Frontend Application
+
+- [x] React project setup (Create React App, react-router-dom, axios, bootstrap)
+- [x] JSON data models: Author, Book, User with correct fields
+- [x] API service: fetches from remote GitHub URL with local fallback
+- [x] Book List Page (4.1): title, author name (not ID), price, image
+- [x] User List Page (4.2): name, email, rented book names (not bookID)
+- [x] Rent Book Feature (4.3): user/book selection, updates rentedBookIDs
+- [x] State management: lifted to App.js for cross-page consistency
+- [x] Navbar with routing between all pages
+- [x] Dockerfile (Node build + nginx, port 8080)
+- [x] ReadMe.txt with group member info
