@@ -1,0 +1,24 @@
+@BookLibraryREST_HostAddress = http://localhost:5088
+
+GET {{BookLibraryREST_HostAddress}}/api/authors
+Accept: application/json
+
+###
+
+GET {{BookLibraryREST_HostAddress}}/api/books
+Accept: application/json
+
+###
+
+GET {{BookLibraryREST_HostAddress}}/api/users
+Accept: application/json
+
+###
+
+POST {{BookLibraryREST_HostAddress}}/api/users/1/rent/2
+Accept: application/json
+
+###
+
+POST {{BookLibraryREST_HostAddress}}/api/users/1/return/2
+Accept: application/json
