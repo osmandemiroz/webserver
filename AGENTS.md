@@ -43,3 +43,13 @@ Mark items `[x]` only when fully implemented and verified in code.
 Mark items `[ ]` when missing, incomplete, or incorrect.
 Add a brief status note after each item.
 
+## Code Conventions
+
+- Project namespaces use `BookLibraryEF` (not `BookLibrary`) for EF-based projects
+- Models go in `Models/` folder
+- DbContext goes in `Data/` folder
+- Controllers go in `Controllers/` folder
+- Views follow `Views/{ControllerName}/{ActionName}.cshtml`
+- Use Code-First migrations for database creation
+- Dockerfile must reference the correct DLL name (e.g., `BookLibraryEF.dll`)
+
