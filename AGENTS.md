@@ -15,3 +15,13 @@ Assignment PDFs are placed alongside their project folders for reference.
 - **Frontend:** Razor Views, Bootstrap 5, Font Awesome
 - **Containerization:** Docker
 
+## Assignment Workflow
+
+When a new assignment PDF is provided:
+
+1. Create a folder named `bim308_hwN/` in the repo root
+2. Place the project and PDF inside that folder
+3. Review the PDF requirements against the current code
+4. Generate a **GitHub-style checklist** comparing requirements vs. current state
+5. Work through the checklist items to complete the assignment
+
