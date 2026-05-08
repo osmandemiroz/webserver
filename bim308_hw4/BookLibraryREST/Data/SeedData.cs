@@ -1,42 +1,54 @@
 using BookLibraryREST.Models;
+using System.Text.Json;
 
 namespace BookLibraryREST.Data
 {
     public static class SeedData
     {
+        private static readonly HttpClient _httpClient = new HttpClient();
+        
+        private static readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
         public static List<Author> CreateAuthors()
         {
-            return new List<Author>
+            try
             {
-                new Author { AuthorID = 1, AuthorName = "George Orwell", AuthorInfo = "English novelist and essayist" },
-                new Author { AuthorID = 2, AuthorName = "J.K. Rowling", AuthorInfo = "British author, Harry Potter series" },
-                new Author { AuthorID = 3, AuthorName = "F. Scott Fitzgerald", AuthorInfo = "American novelist and short story writer" },
-                new Author { AuthorID = 4, AuthorName = "Harper Lee", AuthorInfo = "American novelist known for To Kill a Mockingbird" },
-                new Author { AuthorID = 5, AuthorName = "Jane Austen", AuthorInfo = "English novelist known for social commentary" }
-            };
+                var json = _httpClient.GetStringAsync("https://raw.githubusercontent.com/emindk/JSON_Files/main/authors.json").Result;
+                return JsonSerializer.Deserialize<List<Author>>(json, _jsonOptions) ?? new List<Author>();
+            }
+            catch
+            {
+                return new List<Author>();
+            }
         }
 
         public static List<Book> CreateBooks()
         {
-            return new List<Book>
+            try
             {
-                new Book { BookID = 1, Title = "1984", ReleaseYear = 1949, Price = 120, ImageUrl = "https://m.media-amazon.com/images/I/71kxa1-0mfL._SY466_.jpg", AuthorID = 1 },
-                new Book { BookID = 2, Title = "Animal Farm", ReleaseYear = 1945, Price = 90, ImageUrl = "https://m.media-amazon.com/images/I/91LUbAcpACL._SY466_.jpg", AuthorID = 1 },
-                new Book { BookID = 3, Title = "Harry Potter and the Philosopher's Stone", ReleaseYear = 1997, Price = 150, ImageUrl = "https://m.media-amazon.com/images/I/81YOuOGFCJL._SY466_.jpg", AuthorID = 2 },
-                new Book { BookID = 4, Title = "The Great Gatsby", ReleaseYear = 1925, Price = 110, ImageUrl = "https://m.media-amazon.com/images/I/71FTb9X6wsL._SY466_.jpg", AuthorID = 3 },
-                new Book { BookID = 5, Title = "To Kill a Mockingbird", ReleaseYear = 1960, Price = 130, ImageUrl = "https://m.media-amazon.com/images/I/81gepf1eMqL._SY466_.jpg", AuthorID = 4 },
-                new Book { BookID = 6, Title = "Pride and Prejudice", ReleaseYear = 1813, Price = 100, ImageUrl = "https://m.media-amazon.com/images/I/71Q1tPupKjL._SY466_.jpg", AuthorID = 5 }
-            };
+                var json = _httpClient.GetStringAsync("https://raw.githubusercontent.com/emindk/JSON_Files/main/books.json").Result;
+                return JsonSerializer.Deserialize<List<Book>>(json, _jsonOptions) ?? new List<Book>();
+            }
+            catch
+            {
+                return new List<Book>();
+            }
         }
 
         public static List<User> CreateUsers()
         {
-            return new List<User>
+            try
             {
-                new User { UserID = 1, Name = "Emin Demirkiran", Email = "emin@mail.com", RentedBookIDs = new List<int> { 1, 3, 5 } },
-                new User { UserID = 2, Name = "Elif Sahin", Email = "elif@mail.com", RentedBookIDs = new List<int> { 2, 6 } },
-                new User { UserID = 3, Name = "Ali Yilmaz", Email = "ali.yilmaz@example.com", RentedBookIDs = new List<int>() }
-            };
+                var json = _httpClient.GetStringAsync("https://raw.githubusercontent.com/emindk/JSON_Files/main/users.json").Result;
+                return JsonSerializer.Deserialize<List<User>>(json, _jsonOptions) ?? new List<User>();
+            }
+            catch
+            {
+                return new List<User>();
+            }
         }
     }
 }

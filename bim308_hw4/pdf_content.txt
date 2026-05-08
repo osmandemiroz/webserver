@@ -1,0 +1,139 @@
+BIM308 – Web Server Programming – 4th Assignment 
+ 
+In this homework, you will develop a University Information System using a RESTful API. This system 
+will include key components such as Students, Courses, and Classrooms. The API will facilitate 
+interaction between these components using HTTP methods (GET, POST, PUT, DELETE). 
+1. Sample Data Models (JSON Format) 
+Author: 
+{ 
+    "authorID": 1, 
+    "authorName": " George Orwell", 
+    "authorInfo": " English novelist and essayist", 
+}, 
+{ 
+    "authorID": 2, 
+    "authorName": " J.K. Rowling", 
+    "authorInfo": " British author, Harry Potter series", 
+}, 
+… 
+User: 
+{ 
+    "userID": 1, 
+    "name": "Emin Demirkiran", 
+    " email": "emin@mail.com", 
+    " rentedBookIDs": [1, 3, 5] 
+}, 
+{ 
+    "userID": 2, 
+    "name": "Elif Şahin", 
+    " email": "elif@mail.com", 
+    " rentedBookIDs": [6, 10] 
+} 
+… 
+Book: 
+{ 
+    "bookID": 1, 
+    "title": "1984", 
+    "releaseYear": "1949", 
+    "price": 120, 
+    "authorID": 1, 
+}, 
+{ 
+    "bookID": 2, 
+    "title": "Animal Farm", 
+    "releaseYear": "1945", 
+    "price": 90, 
+    "authorID": 1, 
+} 
+… 
+Sample JSON files prepared for your use: https://github.com/emindk/JSON_Files 
+ 
+2. System Relationships (Conceptual) 
+• A Book belongs to an Author 
+• A User can rent multiple Books 
+• rentedBookIDs field represents the books borrowed by users 
+3. Expected RESTful API Functionalities 
+ 
+Function HTTP 
+Method 
+Endpoint Description 
+List all authors 
+ 
+GET /api/authors/ 
+ 
+Retrieve all authors 
+ 
+Get a specific 
+author 
+GET /api/authors/{id} Retrieve author 
+details 
+Add a new 
+author 
+ 
+POST /api/authors 
+ 
+Create a new 
+author 
+ 
+Update author PUT 
+ 
+/api/authors/{id} 
+ 
+Update author info 
+ 
+Delete author 
+ 
+DELETE /api/authors/{id} 
+ 
+Remove an author 
+ 
+List all books 
+ 
+GET /api/books Retrieve all books 
+Get a specific 
+book 
+GET /api/books/{id} Retrieve book 
+details 
+ 
+Add a new book 
+ 
+POST /api/books Create a new book 
+ 
+Update book 
+ 
+PUT /api/books/{id} Update book info 
+ 
+Delete a book 
+ 
+DELETE /api/books/{id} Remove a book 
+ 
+List all users GET /api/users Retrieve all users 
+Get a specific 
+user 
+GET /api/users/{id} Retrieve user details 
+Add a new user POST /api/users Create a new user 
+Update user PUT /api/users/{id} Update user info 
+Delete user DELETE /api/users/{id} Remove a user 
+Rent a book POST /api/users/{userId}/rent/{bookId} User rents a book 
+Return a book POST /api/users/{userId}/return/{bookId} User returns a book 
+ 
+ 
+4. Technical Requirements 
+• RESTful API principles must be followed 
+• Proper HTTP status codes should be used (200, 201, 404, 400, etc.) 
+• JSON format must be used for request/response 
+• Layered architecture is recommended: 
+o Controller 
+o Service 
+o Repository (optional) 
+ 
+Submitting the Assignment  
+Zip up your project which should be named as yourlastname_yourID_hw4.zip and submit it to 
+ESTUOYS platform until May 10 at 23:59.  
+Only one group member should make submission. Also, please provide a ReadMe.txt file that gives 
+information about the group members. Otherwise, your colleague might not receive any points.  
+Do not forget to put your Project into a container by using the Dockerfile that is given to you. Be 
+careful! You will need to modify your Dockerfile and change the last line from “BookLibrary.dll” to 
+“BookLibraryREST.dll”. 
+Late submission is not allowed by the system. Submissions via e -mail will not be accepted by the 
+instructors and they will be deleted immediately. 
