@@ -17,6 +17,9 @@ webserverprogramming/
   bim308_hw3/          # HW3 - React Frontend
     book-library-app-react/
     BIM308_HW3.pdf
+  bim308_hw4/          # HW4 - RESTful API
+    BookLibraryREST/
+    BIM308_HW4.pdf
 ```
 
 ---
@@ -30,6 +33,7 @@ Each assignment is reviewed against its PDF requirements. Click an assignment be
 | [HW1](bim308_hw1/) | ASP.NET Core MVC Basics | Completed | 24/24 | [Review](bim308_hw1/REVIEW.md) |
 | [HW2](bim308_hw2/) | Entity Framework Core | Implementation Complete | 34/36 | [Review](bim308_hw2/REVIEW.md) |
 | [HW3](bim308_hw3/) | React Frontend App | Completed | 56/56 | [Review](bim308_hw3/REVIEW.md) |
+| [HW4](bim308_hw4/) | RESTful API | Completed | 64/64 | [Review](bim308_hw4/REVIEW.md) |
 
 ### HW1 - ASP.NET Core MVC Basics
 
@@ -64,4 +68,17 @@ Each assignment is reviewed against its PDF requirements. Click an assignment be
 - [x] State management: lifted to App.js for cross-page consistency
 - [x] Navbar with routing between all pages
 - [x] Dockerfile (Node build + nginx, port 8080)
+- [x] ReadMe.txt with group member info
+
+### HW4 - RESTful API
+
+- [x] ASP.NET Core 8 Web API project setup (`BookLibraryREST`)
+- [x] Author, Book, and User models with JSON field names
+- [x] Layered architecture: Controllers, Services, Repository
+- [x] Author CRUD endpoints under `/api/authors`
+- [x] Book CRUD endpoints under `/api/books`
+- [x] User CRUD endpoints under `/api/users`
+- [x] Rent and return endpoints: `/api/users/{userId}/rent/{bookId}` and `/api/users/{userId}/return/{bookId}`
+- [x] Proper HTTP status responses: 200, 201, 204, 400, 404
+- [x] Dockerfile updated to run `BookLibraryREST.dll`
 - [x] ReadMe.txt with group member info
