@@ -25,3 +25,21 @@ When a new assignment PDF is provided:
 4. Generate a **GitHub-style checklist** comparing requirements vs. current state
 5. Work through the checklist items to complete the assignment
 
+## Review Checklist Format
+
+When reviewing an assignment, generate a checklist in this format:
+
+```
+## BIM308 HW{N} - Review Checklist
+
+### Section 1: {Section Name}
+- [ ] Requirement description — STATUS: what's missing or wrong
+- [x] Requirement description — STATUS: done
+
+### Section 2: ...
+```
+
+Mark items `[x]` only when fully implemented and verified in code.
+Mark items `[ ]` when missing, incomplete, or incorrect.
+Add a brief status note after each item.
+
