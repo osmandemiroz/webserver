@@ -66,3 +66,9 @@ docker build -t booklibrary-ef .
 docker run -p 8080:8080 booklibrary-ef
 ```
 
+## Submission
+
+- Format: `yourlastname_yourID_hwN.zip`
+- Include `ReadMe.txt` with group member info
+- Dockerfile is required for containerization
+- Submit to ESTUOYS platform before deadline
