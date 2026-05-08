@@ -53,3 +53,16 @@ Add a brief status note after each item.
 - Use Code-First migrations for database creation
 - Dockerfile must reference the correct DLL name (e.g., `BookLibraryEF.dll`)
 
+## Build & Run
+
+```bash
+# From the project directory (e.g., bim308_hw2/BookLibraryEF/)
+dotnet restore
+dotnet build
+dotnet run
+
+# Docker
+docker build -t booklibrary-ef .
+docker run -p 8080:8080 booklibrary-ef
+```
+
