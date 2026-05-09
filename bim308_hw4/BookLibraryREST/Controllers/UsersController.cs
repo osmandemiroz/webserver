@@ -25,7 +25,7 @@ namespace BookLibraryREST.Controllers
         public ActionResult<User> GetUser(int id)
         {
             var user = _libraryService.GetUser(id);
-            return user is null ? NotFound(new { message = "User was not found." }) : Ok(user);
+            return user is null ? NotFound(new { statusCode = 404, message = "User was not found." }) : Ok(new { statusCode = 200, data = user });
         }
 
         [HttpPost]
@@ -37,21 +37,21 @@ namespace BookLibraryREST.Controllers
                 return ToErrorResult(result);
             }
 
-            return CreatedAtAction(nameof(GetUser), new { id = result.Value!.UserID }, result.Value);
+            return CreatedAtAction(nameof(GetUser), new { id = result.Value!.UserID }, new { statusCode = 201, data = result.Value });
         }
 
         [HttpPut("{id:int}")]
         public IActionResult UpdateUser(int id, [FromBody] User user)
         {
             var result = _libraryService.UpdateUser(id, user);
-            return result.IsSuccess ? NoContent() : ToErrorResult(result);
+            return result.IsSuccess ? Ok(new { statusCode = 200, message = "User updated successfully." }) : ToErrorResult(result);
         }
 
         [HttpDelete("{id:int}")]
         public IActionResult DeleteUser(int id)
         {
             var result = _libraryService.DeleteUser(id);
-            return result.IsSuccess ? NoContent() : ToErrorResult(result);
+            return result.IsSuccess ? Ok(new { statusCode = 200, message = "User deleted successfully." }) : ToErrorResult(result);
         }
 
         [HttpPost("{userId:int}/rent/{bookId:int}")]
@@ -63,7 +63,7 @@ namespace BookLibraryREST.Controllers
                 return ToErrorResult(result);
             }
 
-            return Ok(result.Value);
+            return Ok(new { statusCode = 200, message = "Book rented successfully.", data = result.Value });
         }
 
         [HttpPost("{userId:int}/return/{bookId:int}")]
@@ -75,13 +75,16 @@ namespace BookLibraryREST.Controllers
                 return ToErrorResult(result);
             }
 
-            return Ok(result.Value);
+            return Ok(new { statusCode = 200, message = "Book returned successfully.", data = result.Value });
         }
 
         private ActionResult ToErrorResult(ServiceResult result)
         {
-            var response = new { message = result.Message };
-            return result.Error == ServiceError.NotFound ? NotFound(response) : BadRequest(response);
+            if (result.Error == ServiceError.NotFound)
+            {
+                return NotFound(new { statusCode = 404, message = result.Message });
+            }
+            return BadRequest(new { statusCode = 400, message = result.Message });
         }
     }
 }

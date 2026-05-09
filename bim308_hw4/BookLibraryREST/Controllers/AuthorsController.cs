@@ -25,7 +25,7 @@ namespace BookLibraryREST.Controllers
         public ActionResult<Author> GetAuthor(int id)
         {
             var author = _libraryService.GetAuthor(id);
-            return author is null ? NotFound(new { message = "Author was not found." }) : Ok(author);
+            return author is null ? NotFound(new { statusCode = 404, message = "Author was not found." }) : Ok(new { statusCode = 200, data = author });
         }
 
         [HttpPost]
@@ -37,27 +37,30 @@ namespace BookLibraryREST.Controllers
                 return ToErrorResult(result);
             }
 
-            return CreatedAtAction(nameof(GetAuthor), new { id = result.Value!.AuthorID }, result.Value);
+            return CreatedAtAction(nameof(GetAuthor), new { id = result.Value!.AuthorID }, new { statusCode = 201, data = result.Value });
         }
 
         [HttpPut("{id:int}")]
         public IActionResult UpdateAuthor(int id, [FromBody] Author author)
         {
             var result = _libraryService.UpdateAuthor(id, author);
-            return result.IsSuccess ? NoContent() : ToErrorResult(result);
+            return result.IsSuccess ? Ok(new { statusCode = 200, message = "Author updated successfully." }) : ToErrorResult(result);
         }
 
         [HttpDelete("{id:int}")]
         public IActionResult DeleteAuthor(int id)
         {
             var result = _libraryService.DeleteAuthor(id);
-            return result.IsSuccess ? NoContent() : ToErrorResult(result);
+            return result.IsSuccess ? Ok(new { statusCode = 200, message = "Author deleted successfully." }) : ToErrorResult(result);
         }
 
         private ActionResult ToErrorResult(ServiceResult result)
         {
-            var response = new { message = result.Message };
-            return result.Error == ServiceError.NotFound ? NotFound(response) : BadRequest(response);
+            if (result.Error == ServiceError.NotFound)
+            {
+                return NotFound(new { statusCode = 404, message = result.Message });
+            }
+            return BadRequest(new { statusCode = 400, message = result.Message });
         }
     }
 }
